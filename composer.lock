@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b2cbe1aa1c4fa103859dd95cf905dfc1",
+    "content-hash": "89599eb5a2eb6120bb050e9d8f4cdd4c",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3141,6 +3141,66 @@
                 "promises"
             ],
             "time": "2020-05-12T15:16:56+00:00"
+        },
+        {
+            "name": "scotteh/php-dom-wrapper",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/scotteh/php-dom-wrapper.git",
+                "reference": "f4cc356f39c822b6e035521fb21c0860f4de053e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/scotteh/php-dom-wrapper/zipball/f4cc356f39c822b6e035521fb21c0860f4de053e",
+                "reference": "f4cc356f39c822b6e035521fb21c0860f4de053e",
+                "shasum": ""
+            },
+            "require": {
+                "ext-libxml": "*",
+                "ext-mbstring": "*",
+                "lib-libxml": ">=2.7.7",
+                "php": ">=7.1.0",
+                "symfony/css-selector": "^4.0 || ^5.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7.0 || ^8.0 || ^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "DOMWrap\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Andrew Scott",
+                    "email": "andrew@andrewscott.net.au"
+                }
+            ],
+            "description": "Simple DOM wrapper to select nodes using either CSS or XPath expressions and manipulate results quickly and easily.",
+            "homepage": "https://github.com/scotteh/php-dom-wrapper",
+            "keywords": [
+                "css",
+                "dom",
+                "html",
+                "parser",
+                "wrapper"
+            ],
+            "support": {
+                "issues": "https://github.com/scotteh/php-dom-wrapper/issues",
+                "source": "https://github.com/scotteh/php-dom-wrapper/tree/2.0.0"
+            },
+            "time": "2021-01-24T05:47:18+00:00"
         },
         {
             "name": "seld/jsonlint",
