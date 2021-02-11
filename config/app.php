@@ -232,4 +232,9 @@ return [
 
     ],
 
+
+    'sites' => [
+        \App\Models\Sites\IngatlanCom::class
+    ]
+
 ];

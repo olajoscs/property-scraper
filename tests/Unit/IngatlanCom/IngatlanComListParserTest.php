@@ -26,7 +26,7 @@ class IngatlanComListParserTest extends TestCase
         $expected = [
             ParsedProperty::make(
                 [
-                    'foreignId' => '31944392',
+                    'foreign_id' => '31944392',
                     'image' => 'https://ot.ingatlancdn.com/19/6b/31944392_204459752_m.jpg',
                     'link' => '/nyekladhaza/elado+haz/csaladi-haz/31944392',
                     'price' => 24900000,
@@ -38,7 +38,7 @@ class IngatlanComListParserTest extends TestCase
             ),
             ParsedProperty::make(
                 [
-                    'foreignId' => '31939569',
+                    'foreign_id' => '31939569',
                     'image' => 'https://ot.ingatlancdn.com/51/73/31939569_204405447_m.jpg',
                     'link' => '/nyekladhaza-napospart/elado+haz/csaladi-haz/31939569',
                     'price' => 35000000,
@@ -50,7 +50,7 @@ class IngatlanComListParserTest extends TestCase
             ),
             ParsedProperty::make(
                 [
-                    'foreignId' => '30646900',
+                    'foreign_id' => '30646900',
                     'image' => 'https://ot.ingatlancdn.com/e1/47/30646900_190325407_m.jpg',
                     'link' => '/nyekladhaza/elado+haz/csaladi-haz/30646900',
                     'price' => 19500000,
@@ -62,7 +62,7 @@ class IngatlanComListParserTest extends TestCase
             ),
             ParsedProperty::make(
                 [
-                    'foreignId' => '31963686',
+                    'foreign_id' => '31963686',
                     'image' => 'https://ot.ingatlancdn.com/09/5d/31963686_204665201_m.jpg',
                     'link' => '/miskolc-szirma/elado+haz/csaladi-haz/31963686',
                     'price' => 27600000,
@@ -74,7 +74,7 @@ class IngatlanComListParserTest extends TestCase
             ),
             ParsedProperty::make(
                 [
-                    'foreignId' => '31904064',
+                    'foreign_id' => '31904064',
                     'image' => 'https://ot.ingatlancdn.com/97/03/31904064_203951027_m.jpg',
                     'link' => '/nyekladhaza/elado+haz/csaladi-haz/31904064',
                     'price' => 31900000,
@@ -86,7 +86,7 @@ class IngatlanComListParserTest extends TestCase
             ),
             ParsedProperty::make(
                 [
-                    'foreignId' => '31770322',
+                    'foreign_id' => '31770322',
                     'image' => 'https://ot.ingatlancdn.com/78/94/31770322_202374434_m.jpg',
                     'link' => '/nyekladhaza/elado+haz/csaladi-haz/31770322',
                     'price' => 24900000,
@@ -98,7 +98,7 @@ class IngatlanComListParserTest extends TestCase
             ),
             ParsedProperty::make(
                 [
-                    'foreignId' => '32030441',
+                    'foreign_id' => '32030441',
                     'image' => null,
                     'link' => '/miskolc-szirma/elado+haz/csaladi-haz/32030441',
                     'price' => 34900000,
@@ -110,7 +110,7 @@ class IngatlanComListParserTest extends TestCase
             ),
             ParsedProperty::make(
                 [
-                    'foreignId' => '32017369',
+                    'foreign_id' => '32017369',
                     'image' => 'https://ot.ingatlancdn.com/5e/f7/32017369_205275994_m.jpg',
                     'link' => '/malyi/elado+haz/csaladi-haz/32017369',
                     'price' => 12900000,
@@ -122,7 +122,7 @@ class IngatlanComListParserTest extends TestCase
             ),
             ParsedProperty::make(
                 [
-                    'foreignId' => '32016974',
+                    'foreign_id' => '32016974',
                     'image' => 'https://ot.ingatlancdn.com/7f/ce/32016974_205271798_m.jpg',
                     'link' => '/malyi/elado+haz/csaladi-haz/32016974',
                     'price' => 12900000,
@@ -134,7 +134,7 @@ class IngatlanComListParserTest extends TestCase
             ),
             ParsedProperty::make(
                 [
-                    'foreignId' => '31972585',
+                    'foreign_id' => '31972585',
                     'image' => 'https://ot.ingatlancdn.com/80/29/31972585_204772961_m.jpg',
                     'link' => '/malyi/elado+haz/sorhaz/31972585',
                     'price' => 31900000,
@@ -146,7 +146,7 @@ class IngatlanComListParserTest extends TestCase
             ),
             ParsedProperty::make(
                 [
-                    'foreignId' => '31948795',
+                    'foreign_id' => '31948795',
                     'image' => 'https://ot.ingatlancdn.com/85/d8/31948795_204504725_m.jpg',
                     'link' => '/malyi/elado+haz/sorhaz/31948795',
                     'price' => 29900000,
@@ -158,7 +158,7 @@ class IngatlanComListParserTest extends TestCase
             ),
             ParsedProperty::make(
                 [
-                    'foreignId' => '31935553',
+                    'foreign_id' => '31935553',
                     'image' => 'https://ot.ingatlancdn.com/7e/17/31935553_204355834_m.jpg',
                     'link' => '/nyekladhaza/elado+haz/csaladi-haz/31935553',
                     'price' => 24900000,
@@ -170,7 +170,7 @@ class IngatlanComListParserTest extends TestCase
             ),
             ParsedProperty::make(
                 [
-                    'foreignId' => '31927629',
+                    'foreign_id' => '31927629',
                     'image' => 'https://ot.ingatlancdn.com/41/e3/31927629_204261946_m.jpg',
                     'link' => '/miskolc-szirma/elado+haz/csaladi-haz/31927629',
                     'price' => 27600000,
@@ -182,7 +182,7 @@ class IngatlanComListParserTest extends TestCase
             ),
             ParsedProperty::make(
                 [
-                    'foreignId' => '31882396',
+                    'foreign_id' => '31882396',
                     'image' => 'https://ot.ingatlancdn.com/fc/4d/31882396_204223978_m.jpg',
                     'link' => '/malyi/elado+haz/csaladi-haz/31882396',
                     'price' => 19500000,
@@ -194,7 +194,7 @@ class IngatlanComListParserTest extends TestCase
             ),
             ParsedProperty::make(
                 [
-                    'foreignId' => '31754723',
+                    'foreign_id' => '31754723',
                     'image' => 'https://ot.ingatlancdn.com/76/b3/31754723_202196946_m.jpg',
                     'link' => '/malyi/elado+haz/csaladi-haz/31754723',
                     'price' => 31900000,
@@ -206,7 +206,7 @@ class IngatlanComListParserTest extends TestCase
             ),
             ParsedProperty::make(
                 [
-                    'foreignId' => '31732957',
+                    'foreign_id' => '31732957',
                     'image' => 'https://mt.ingatlancdn.com/61/62/117244687_m_0.jpg',
                     'link' => '/malyi/elado+haz/sorhaz/31732957',
                     'price' => 35000000,
@@ -218,7 +218,7 @@ class IngatlanComListParserTest extends TestCase
             ),
             ParsedProperty::make(
                 [
-                    'foreignId' => '31673955',
+                    'foreign_id' => '31673955',
                     'image' => 'https://ot.ingatlancdn.com/2a/bd/31673955_201317494_m.jpg',
                     'link' => '/szirmabesenyo/elado+haz/csaladi-haz/31673955',
                     'price' => 9490000,
@@ -230,7 +230,7 @@ class IngatlanComListParserTest extends TestCase
             ),
             ParsedProperty::make(
                 [
-                    'foreignId' => '31615847',
+                    'foreign_id' => '31615847',
                     'image' => 'https://ot.ingatlancdn.com/e1/81/31615847_200693888_m.jpg',
                     'link' => '/malyi-uduloterulet/elado+haz/konnyuszerkezetes-haz/31615847',
                     'price' => 15900000,
@@ -242,7 +242,7 @@ class IngatlanComListParserTest extends TestCase
             ),
             ParsedProperty::make(
                 [
-                    'foreignId' => '31484191',
+                    'foreign_id' => '31484191',
                     'image' => 'https://ot.ingatlancdn.com/7a/32/31484191_199254799_m.jpg',
                     'link' => '/szirmabesenyo/elado+haz/csaladi-haz/31484191',
                     'price' => 19800000,

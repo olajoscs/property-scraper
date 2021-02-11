@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace App\Services\Parsers;
 
 use App\Models\ParsedProperty;
-use App\Models\Sites\Sites;
+use App\Models\Sites\IngatlanCom;
 use DOMWrap\Document;
 use DOMWrap\Element;
 
 /**
  * Ingatlan.com html parser
  */
-class IngatlanComListParser
+class IngatlanComListParser implements ListParser
 {
     /**
      * Parse the html of an Ingatlan.com site then create ParsedProperty objects
@@ -37,7 +37,7 @@ class IngatlanComListParser
         return array_map(
             function (ParsedProperty $property) {
                 $property->name = '';
-                $property->site = Sites::INGATLAN_COM;
+                $property->site = IngatlanCom::getSite();
 
                 return $property;
             },
@@ -90,7 +90,7 @@ class IngatlanComListParser
         $property->price = $this->getPrice($link);
         $property->place = $this->getPlace($link);
         $property->area = $this->getArea($link);
-        $property->foreignId = $this->getForeignId($link);
+        $property->foreign_id = $this->getForeignId($link);
     }
 
 

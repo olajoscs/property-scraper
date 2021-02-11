@@ -18,12 +18,17 @@ class CreatePropertiesTable extends Migration
             $table->string('name');
             $table->string('place');
             $table->string('link');
+            $table->string('foreign_id');
             $table->string('site');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->unsignedInteger('area');
             $table->unsignedInteger('price');
             $table->boolean('sendable');
             $table->timestamps();
+        });
+
+        Schema::table('properties', function (Blueprint $table) {
+            $table->unique(['site', 'foreign_id']);
         });
     }
 

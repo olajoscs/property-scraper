@@ -4,24 +4,28 @@ declare(strict_types=1);
 
 namespace App\Services\UrlGenerators;
 
-use App\Services\FilterMappers\IngatlanComFilterMapper;
+use App\Models\Filters\SiteFilter;
 
 /**
- *
+ * Generator of ingatlan.com specific url based on the filters
  */
-class IngatlanComUrlGenerator
+class IngatlanComUrlGenerator implements UrlGenerator
 {
-    private $filterMapper;
-
-
-    public function __construct(IngatlanComFilterMapper $filterMapper)
+    public function generate(SiteFilter ...$siteFilters): string
     {
-        $this->filterMapper = $filterMapper;
-    }
+        $strings = array_map(
+            function (SiteFilter $siteFilter) {
+                return $siteFilter->getAsParameterString();
+            },
+            $siteFilters
+        );
 
+        $strings[] = 'elado';
+        $strings[] = 'haz';
 
-    public function generate(array $filters): string
-    {
-        $mappedFilters = $this->filterMapper->map($filters);
+        return sprintf(
+            'https://ingatlan.com/lista/%s',
+            implode('+', $strings)
+        );
     }
 }

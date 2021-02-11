@@ -4,21 +4,38 @@ declare(strict_types=1);
 
 namespace App\Models\Sites;
 
+use App\Services\FilterMappers\FilterMapper;
+use App\Services\FilterMappers\IngatlanComFilterMapper;
 use App\Services\Parsers\IngatlanComListParser;
+use App\Services\Parsers\ListParser;
 use App\Services\UrlGenerators\IngatlanComUrlGenerator;
+use App\Services\UrlGenerators\UrlGenerator;
 
 /**
  *
  */
-class IngatlanCom
+class IngatlanCom implements Site
 {
-    private $parser;
-    private $urlGenerator;
-
-
-    public function __construct(IngatlanComListParser $parser, IngatlanComUrlGenerator $urlGenerator)
+    public static function getSite(): string
     {
-        $this->parser = $parser;
-        $this->urlGenerator = $urlGenerator;
+        return 'ingatlan.com';
+    }
+
+
+    public function getFilterMapper(): FilterMapper
+    {
+        return new IngatlanComFilterMapper();
+    }
+
+
+    public function getUrlGenerator(): UrlGenerator
+    {
+        return new IngatlanComUrlGenerator();
+    }
+
+
+    public function getListParser(): ListParser
+    {
+        return new IngatlanComListParser();
     }
 }

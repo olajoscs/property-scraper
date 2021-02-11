@@ -14,9 +14,9 @@ use App\Models\Filters\PriceFilter;
 use App\Models\Filters\SiteFilter;
 
 /**
- * Map the filters into specific Ingatlan.com filters, which can be used on that site
+ * Map the filters into Ingatlan.com specific filters
  */
-class IngatlanComFilterMapper
+class IngatlanComFilterMapper implements FilterMapper
 {
     private const FILTER_MAP = [
         AreaFilter::class => IngatlanComAreaFilter::class,

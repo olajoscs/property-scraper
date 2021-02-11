@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $name
  * @property string $place
  * @property string $link
+ * @property string foreign_id
  * @property string $site
  * @property string $image
  * @property int $sendable
@@ -30,11 +31,12 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Property whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Property wherePlace($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Property whereSendable($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Property whereForeignId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Property whereSite($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Property whereUpdatedAt($value)
- * @mixin \Eloquent
  * @method static \Illuminate\Database\Eloquent\Builder|Property wherePrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Property whereArea($value)
+ * @mixin \Eloquent
  */
 class Property extends Model
 {
@@ -46,5 +48,6 @@ class Property extends Model
         'image',
         'price',
         'area',
+        'foreign_id',
     ];
 }

@@ -13,9 +13,7 @@ class IngatlanComAreaFilterTest extends TestCase
     public function test_normal(): void
     {
         $areaFilter = new AreaFilter(10, 150);
-
         $ingatlanComAreaFilter = new IngatlanComAreaFilter($areaFilter);
-
         $this->assertSame('10-150-m2', $ingatlanComAreaFilter->getAsParameterString());
     }
 
@@ -23,9 +21,7 @@ class IngatlanComAreaFilterTest extends TestCase
     public function test_reversed(): void
     {
         $areaFilter = new AreaFilter(120, 50);
-
         $ingatlanComAreaFilter = new IngatlanComAreaFilter($areaFilter);
-
         $this->assertSame('50-120-m2', $ingatlanComAreaFilter->getAsParameterString());
     }
 }

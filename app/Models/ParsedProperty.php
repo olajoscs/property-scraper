@@ -12,7 +12,7 @@ class ParsedProperty
     /**
      * @var string
      */
-    public $foreignId;
+    public $foreign_id;
 
     /**
      * @var string|null
