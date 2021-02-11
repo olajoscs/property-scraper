@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tests\Unit;
+namespace Tests\Unit\IngatlanCom;
 
 use App\Models\ParsedProperty;
 use App\Services\Parsers\IngatlanComListParser;
-use Tests\TestCase;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test the parser of the ingatlan.com
@@ -19,7 +19,7 @@ class IngatlanComListParserTest extends TestCase
     private $html;
 
 
-    public function test(): void
+    public function test_parse_list_page_properties(): void
     {
         $parser = new IngatlanComListParser();
 
