@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services\Parsers;
 
-use App\Models\ParsedProperty;
+use App\Models\ParsedPropertyList;
 
 /**
  * Parser of the html of a site then create ParsedProperty objects
@@ -16,7 +16,7 @@ interface ListParser
      *
      * @param string $html
      *
-     * @return ParsedProperty[]
+     * @return ParsedPropertyList
      */
-    public function parse(string $html): array;
+    public function parse(string $html): ParsedPropertyList;
 }

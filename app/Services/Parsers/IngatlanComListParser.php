@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Services\Parsers;
 
 use App\Models\ParsedProperty;
+use App\Models\ParsedPropertyList;
 use App\Models\Sites\IngatlanCom;
 use DOMWrap\Document;
 use DOMWrap\Element;
@@ -19,9 +20,9 @@ class IngatlanComListParser implements ListParser
      *
      * @param string $html
      *
-     * @return ParsedProperty[]
+     * @return ParsedPropertyList
      */
-    public function parse(string $html): array
+    public function parse(string $html): ParsedPropertyList
     {
         $document = new Document();
         $document->html($html);
@@ -34,15 +35,9 @@ class IngatlanComListParser implements ListParser
             $properties[] = $this->createParsedPropertyFromItem($item);
         }
 
-        return array_map(
-            function (ParsedProperty $property) {
-                $property->name = '';
-                $property->site = IngatlanCom::getSite();
+        $hasNextPage = $this->hasNextPageLink($document);
 
-                return $property;
-            },
-            $properties
-        );
+        return new ParsedPropertyList($properties, $hasNextPage);
     }
 
 
@@ -54,6 +49,9 @@ class IngatlanComListParser implements ListParser
         foreach ($links as $link) {
             $this->fillFromLink($property, $link);
         }
+
+        $property->name = '';
+        $property->site = IngatlanCom::getSite();
 
         return $property;
     }
@@ -132,5 +130,26 @@ class IngatlanComListParser implements ListParser
         $parts = explode('/', $url);
 
         return end($parts);
+    }
+
+
+    private function hasNextPageLink(Document $document): bool
+    {
+        /** @var Element[] $links */
+        $links = $document->find('.pagination__button')->toArray();
+
+
+        if (count($links) === 0) {
+            return false;
+        }
+
+        $nextLinks = array_filter(
+            $links,
+            function (Element $link) {
+                return mb_stripos($link->text(), 'Következő') !== false;
+            }
+        );
+
+        return count($nextLinks) > 0;
     }
 }

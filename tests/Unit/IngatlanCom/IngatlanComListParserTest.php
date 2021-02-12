@@ -13,17 +13,88 @@ use PHPUnit\Framework\TestCase;
  */
 class IngatlanComListParserTest extends TestCase
 {
-    /**
-     * @var string
-     */
-    private $html;
-
-
     public function test_parse_list_page_properties(): void
     {
         $parser = new IngatlanComListParser();
+        $html = file_get_contents(__DIR__ . '/fixtures/ingatlan-com-list-page.html');
 
-        $expected = [
+        $expedtedParsedProducts = $this->getExpectedParsedProducts();
+        $parsedList = $parser->parse($html);
+
+        $this->assertSameModels($expedtedParsedProducts, $parsedList->parsedProperties);
+        $this->assertFalse($parsedList->hasNextPage);
+    }
+
+
+    public function test_parse_list_page_properties_with_prev_and_next_page(): void
+    {
+        $parser = new IngatlanComListParser();
+        $html = file_get_contents(__DIR__ . '/fixtures/ingatlan-com-list-page-with-next-prev-page.html');
+
+        $expedtedParsedProducts = $this->getExpectedParsedProducts();
+        $parsedList = $parser->parse($html);
+
+        $this->assertSameModels($expedtedParsedProducts, $parsedList->parsedProperties);
+        $this->assertTrue($parsedList->hasNextPage);
+    }
+
+
+    public function test_parse_list_page_properties_with_prev_page(): void
+    {
+        $parser = new IngatlanComListParser();
+        $html = file_get_contents(__DIR__ . '/fixtures/ingatlan-com-list-page-with-prev-page.html');
+
+        $expedtedParsedProducts = $this->getExpectedParsedProducts();
+        $parsedList = $parser->parse($html);
+
+        $this->assertSameModels($expedtedParsedProducts, $parsedList->parsedProperties);
+        $this->assertFalse($parsedList->hasNextPage);
+    }
+
+
+    public function test_parse_list_page_properties_with_next_page(): void
+    {
+        $parser = new IngatlanComListParser();
+        $html = file_get_contents(__DIR__ . '/fixtures/ingatlan-com-list-page-with-next-page.html');
+
+        $expedtedParsedProducts = $this->getExpectedParsedProducts();
+        $parsedList = $parser->parse($html);
+
+        $this->assertSameModels($expedtedParsedProducts, $parsedList->parsedProperties);
+        $this->assertTrue($parsedList->hasNextPage);
+    }
+
+
+    /**
+     * Assert that the attributes of the models are same
+     *
+     * @param ParsedProperty[] $expected
+     * @param ParsedProperty[] $actual
+     *
+     * @return void
+     */
+    protected function assertSameModels(array $expected, array $actual): void
+    {
+        $this->assertSame(
+            array_map(
+                function (ParsedProperty $property) {
+                    return (array)$property;
+                },
+                $expected
+            ),
+            array_map(
+                function (ParsedProperty $property) {
+                    return (array)$property;
+                },
+                $actual
+            )
+        );
+    }
+
+
+    private function getExpectedParsedProducts(): array
+    {
+        return [
             ParsedProperty::make(
                 [
                     'foreign_id' => '31944392',
@@ -253,43 +324,5 @@ class IngatlanComListParserTest extends TestCase
                 ]
             ),
         ];
-
-        $parsed = $parser->parse($this->html);
-
-        $this->assertSameModels($expected, $parsed);
-    }
-
-
-    /**
-     * Assert that the attributes of the models are same
-     *
-     * @param ParsedProperty[] $expected
-     * @param ParsedProperty[] $actual
-     *
-     * @return void
-     */
-    protected function assertSameModels(array $expected, array $actual): void
-    {
-        $this->assertSame(
-            array_map(
-                function (ParsedProperty $property) {
-                    return (array)$property;
-                },
-                $expected
-            ),
-            array_map(
-                function (ParsedProperty $property) {
-                    return (array)$property;
-                },
-                $actual
-            )
-        );
-    }
-
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-        $this->html = file_get_contents(__DIR__ . '/fixtures/ingatlan-com-list-page.html');
     }
 }
