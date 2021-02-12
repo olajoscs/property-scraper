@@ -11,7 +11,7 @@ use App\Models\Filters\SiteFilter;
  */
 class IngatlanComUrlGenerator implements UrlGenerator
 {
-    public function generate(SiteFilter ...$siteFilters): string
+    public function generate(int $pageNumber, SiteFilter ...$siteFilters): string
     {
         $strings = array_map(
             function (SiteFilter $siteFilter) {
@@ -23,9 +23,22 @@ class IngatlanComUrlGenerator implements UrlGenerator
         $strings[] = 'elado';
         $strings[] = 'haz';
 
+        $pageNumberString = $this->generatePageNumberString($pageNumber);
+
         return sprintf(
-            'https://ingatlan.com/lista/%s',
-            implode('+', $strings)
+            'https://ingatlan.com/lista/%s%s',
+            implode('+', $strings),
+            $pageNumberString
         );
+    }
+
+
+    private function generatePageNumberString(int $pageNumber): string
+    {
+        if ($pageNumber < 2) {
+            return '';
+        }
+
+        return sprintf('?page=%s', $pageNumber);
     }
 }
