@@ -8,6 +8,7 @@ use App\Models\Filters\Filter;
 use App\Models\Sites\Site;
 use App\Services\Client;
 use App\Services\PropertyMapper;
+use Psr\Log\LoggerInterface;
 
 /**
  * Parser of one site
@@ -16,22 +17,28 @@ class SiteParser
 {
     private $propertyMapper;
     private $client;
+    private $logger;
 
 
-    public function __construct(PropertyMapper $propertyMapper, Client $client)
+    public function __construct(PropertyMapper $propertyMapper, Client $client, LoggerInterface $logger)
     {
         $this->propertyMapper = $propertyMapper;
         $this->client = $client;
+        $this->logger = $logger;
     }
 
 
     public function parse(Site $site, Filter ...$filters): void
     {
+        $this->logger->info('Getting properties from ' . $site::getSite());
         $siteFilters = $site->getFilterMapper()->map(...$filters);
 
         $parsedProperties = $this->parseProeprtiesFromSite($site, $siteFilters);
 
+        $this->logger->info(count($parsedProperties) . ' properties found');
         $this->propertyMapper->map(...$parsedProperties);
+
+        $this->logger->info('Saved');
     }
 
 
