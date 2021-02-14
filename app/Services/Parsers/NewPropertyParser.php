@@ -46,7 +46,7 @@ class NewPropertyParser
         return [
             new AreaFilter(80, 150),
             new PriceFilter(5000000, 35000000),
-            new LocationFilter('Miskolc', 'Miskolc Szirma', 'Szirmabesenyő', 'Mályi', 'Nyékládháza', 'Sajóvámos'),
+            new LocationFilter('Miskolc', 'Szirmabesenyő', 'Mályi', 'Nyékládháza', 'Sajóvámos', 'Kistokaj'),
         ];
     }
 }

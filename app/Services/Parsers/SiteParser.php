@@ -38,7 +38,7 @@ class SiteParser
         $this->logger->info(count($parsedProperties) . ' properties found');
         $this->propertyMapper->map(...$parsedProperties);
 
-        $this->logger->info('Saved');
+        $this->logger->info('Scraping the ' . $site::getSite() . ' is done');
     }
 
 
@@ -47,9 +47,11 @@ class SiteParser
         $pageNumber = 1;
         $parsedProperties = [];
         while (true) {
+            $this->logger->info('Getting page #' . $pageNumber . '...');
             $url = $site->getUrlGenerator()->generate($pageNumber, ...$siteFilters);
             $content = $this->client->get($url);
             $result = $site->getListParser()->parse($content);
+            $this->logger->info(count($result->parsedProperties) . ' properties found');
 
             $parsedProperties[] = $result->parsedProperties;
 
