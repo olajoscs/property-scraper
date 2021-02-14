@@ -7,6 +7,9 @@ use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel
 {
+    private const LOG_PATH = 'storage/logs/';
+
+
     /**
      * The Artisan commands provided by your application.
      *
@@ -24,7 +27,13 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        $time = (new \DateTime())->format('Y-m-d-H-i-s');
+
+        $schedule
+            ->command('property:search')
+            ->everyFifteenMinutes()
+            ->between('6:00', '22:00')
+            ->sendOutputTo(self::LOG_PATH . 'property-search-' . $time);
     }
 
     /**
