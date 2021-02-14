@@ -7,17 +7,20 @@ namespace App\Services\Parsers;
 use App\Models\Filters\AreaFilter;
 use App\Models\Filters\LocationFilter;
 use App\Models\Filters\PriceFilter;
+use App\Services\SiteProvider;
 
 /**
  * Parser of the sites with the filters
  */
 class NewPropertyParser
 {
+    private $siteProvider;
     private $siteParser;
 
 
-    public function __construct(SiteParser $siteParser)
+    public function __construct(SiteProvider $siteProvider, SiteParser $siteParser)
     {
+        $this->siteProvider = $siteProvider;
         $this->siteParser = $siteParser;
     }
 
@@ -25,17 +28,13 @@ class NewPropertyParser
     /**
      * Parse the sites with the filters
      *
-     * @param array $siteClasses
-     *
      * @return void
      */
-    public function parse(array $siteClasses): void
+    public function parse(): void
     {
         $filters = $this->createFilters();
 
-        foreach ($siteClasses as $siteClass) {
-            $site = new $siteClass();
-
+        foreach ($this->siteProvider->getAll() as $site) {
             $this->siteParser->parse($site, ...$filters);
         }
     }

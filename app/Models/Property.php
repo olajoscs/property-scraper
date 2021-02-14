@@ -50,4 +50,18 @@ class Property extends Model
         'area',
         'foreign_id',
     ];
+
+
+    public function getImportantAttributes(): array
+    {
+        return [
+            'name',
+            'place',
+            'link',
+            'site',
+            'image',
+            'price',
+            'area',
+        ];
+    }
 }

@@ -38,4 +38,10 @@ class IngatlanCom implements Site
     {
         return new IngatlanComListParser();
     }
+
+
+    public function getDomain(): string
+    {
+        return 'https://ingatlan.com';
+    }
 }

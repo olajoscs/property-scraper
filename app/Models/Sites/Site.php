@@ -43,4 +43,12 @@ interface Site
      * @return ListParser
      */
     public function getListParser(): ListParser;
+
+
+    /**
+     * Return the domain of the site
+     *
+     * @return string
+     */
+    public function getDomain(): string;
 }

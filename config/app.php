@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'hu',
 
     /*
     |--------------------------------------------------------------------------
@@ -231,10 +231,4 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
     ],
-
-
-    'sites' => [
-        \App\Models\Sites\IngatlanCom::class
-    ]
-
 ];

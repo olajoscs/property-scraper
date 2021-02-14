@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Services\NewPropertySender;
 use App\Services\Parsers\NewPropertyParser;
 use Illuminate\Console\Command;
 
@@ -22,17 +23,14 @@ class PropertySearch extends Command
     protected $description = 'Start the search for new or update properties';
 
     private $newPropertyParser;
+    private $newPropertySender;
 
 
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
-    public function __construct(NewPropertyParser $newPropertyParser)
+    public function __construct(NewPropertyParser $newPropertyParser, NewPropertySender $newPropertySender)
     {
         parent::__construct();
         $this->newPropertyParser = $newPropertyParser;
+        $this->newPropertySender = $newPropertySender;
     }
 
     /**
@@ -42,8 +40,7 @@ class PropertySearch extends Command
      */
     public function handle()
     {
-        $siteClasses = \Config::get('app.sites');
-
-        $this->newPropertyParser->parse($siteClasses);
+        $this->newPropertyParser->parse();
+        $this->newPropertySender->send();
     }
 }

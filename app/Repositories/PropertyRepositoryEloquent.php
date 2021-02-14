@@ -6,6 +6,7 @@ namespace App\Repositories;
 
 use App\Models\Property;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Collection;
 
 /**
  * Eloquent implmentation of the repository layer
@@ -32,7 +33,7 @@ class PropertyRepositoryEloquent implements PropertyRepository
     {
         \DB::transaction(function() use ($properties) {
             foreach ($properties as $property) {
-                if ($property->isDirty()) {
+                if ($property->isDirty($property->getImportantAttributes())) {
                     $property->sendable = true;
                 }
 
@@ -48,5 +49,11 @@ class PropertyRepositoryEloquent implements PropertyRepository
             'foreignId' => $foreignId,
             'site' => $site
         ]);
+    }
+
+
+    public function findNewProperties(): Collection
+    {
+        return Property::where('sendable', '=', true)->get();
     }
 }

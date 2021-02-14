@@ -6,6 +6,7 @@ namespace App\Repositories;
 
 use App\Models\Property;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Collection;
 
 /**
  * Repository layer of the properties
@@ -43,4 +44,12 @@ interface PropertyRepository
      * @return void
      */
     public function save(Property ...$properties): void;
+
+
+    /**
+     * Find new properties
+     *
+     * @return Collection
+     */
+    public function findNewProperties(): Collection;
 }
