@@ -47,7 +47,7 @@
                             <img src="{{ $property->image }}">
                         </a>
                     </td>
-                    <td colspan="3">{{ $property->name }}&nbsp;</td>
+                    <td colspan="3">{{ $property->isNew() ? __('mail.property_is_new') : '' }} {{ $property->name }}&nbsp;</td>
                 </tr>
                 <tr>
                     <td colspan="3">{{ $property->place }}</td>

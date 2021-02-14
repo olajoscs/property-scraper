@@ -64,4 +64,10 @@ class Property extends Model
             'area',
         ];
     }
+
+
+    public function isNew(): bool
+    {
+        return $this->created_at->format('Y-m-d H:i:s') === $this->updated_at->format('Y-m-d H:i:s');
+    }
 }
