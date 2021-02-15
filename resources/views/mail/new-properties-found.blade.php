@@ -43,7 +43,7 @@
             @foreach ($properties as $property)
                 <tr class="property-item">
                     <td rowspan="3">
-                        <a href="{{ $sites[$siteName]->getDomain() . $property->link }}">
+                        <a href="{{ $linkGenerator($property->link, $sites[$siteName]) }}">
                             <img src="{{ $property->image }}">
                         </a>
                     </td>

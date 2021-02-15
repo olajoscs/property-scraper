@@ -50,5 +50,5 @@ interface Site
      *
      * @return string
      */
-    public function getDomain(): string;
+    public static function getDomain(): string;
 }

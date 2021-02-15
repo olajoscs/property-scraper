@@ -37,7 +37,7 @@ class IngatlanCom implements Site
     }
 
 
-    public function getDomain(): string
+    public static function getDomain(): string
     {
         return 'https://ingatlan.com';
     }
