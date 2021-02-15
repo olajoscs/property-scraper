@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Services\NewPropertySender;
-use App\Services\Parsers\NewPropertyParser;
+use App\Services\NewPropertyScraper;
 use Illuminate\Console\Command;
 
 class PropertySearch extends Command
@@ -26,7 +26,7 @@ class PropertySearch extends Command
     private $newPropertySender;
 
 
-    public function __construct(NewPropertyParser $newPropertyParser, NewPropertySender $newPropertySender)
+    public function __construct(NewPropertyScraper $newPropertyParser, NewPropertySender $newPropertySender)
     {
         parent::__construct();
         $this->newPropertyParser = $newPropertyParser;

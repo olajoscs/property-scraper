@@ -2,18 +2,16 @@
 
 declare(strict_types=1);
 
-namespace App\Services\Parsers;
+namespace App\Services;
 
 use App\Models\Filters\Filter;
 use App\Models\Sites\Site;
-use App\Services\Client;
-use App\Services\PropertyMapper;
 use Psr\Log\LoggerInterface;
 
 /**
- * Parser of one site
+ * Scraper of one site
  */
-class SiteParser
+class SiteScraper
 {
     private $propertyMapper;
     private $client;

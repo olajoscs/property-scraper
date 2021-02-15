@@ -15,13 +15,6 @@ use DOMWrap\Element;
  */
 class IngatlanComListParser implements ListParser
 {
-    /**
-     * Parse the html of an Ingatlan.com site then create ParsedProperty objects
-     *
-     * @param string $html
-     *
-     * @return ParsedPropertyList
-     */
     public function parse(string $html): ParsedPropertyList
     {
         $document = new Document();

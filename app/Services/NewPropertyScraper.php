@@ -2,23 +2,22 @@
 
 declare(strict_types=1);
 
-namespace App\Services\Parsers;
+namespace App\Services;
 
 use App\Models\Filters\AreaFilter;
 use App\Models\Filters\LocationFilter;
 use App\Models\Filters\PriceFilter;
-use App\Services\SiteProvider;
 
 /**
  * Parser of the sites with the filters
  */
-class NewPropertyParser
+class NewPropertyScraper
 {
     private $siteProvider;
     private $siteParser;
 
 
-    public function __construct(SiteProvider $siteProvider, SiteParser $siteParser)
+    public function __construct(SiteProvider $siteProvider, SiteScraper $siteParser)
     {
         $this->siteProvider = $siteProvider;
         $this->siteParser = $siteParser;

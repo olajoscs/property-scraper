@@ -16,7 +16,7 @@ use App\Models\Filters\SiteFilter;
 /**
  * Map the filters into Ingatlan.com specific filters
  */
-class IngatlanComFilterMapper implements FilterMapper
+class IngatlanComFilterMapper extends CommonFilterMapper
 {
     private const FILTER_MAP = [
         AreaFilter::class => IngatlanComAreaFilter::class,
@@ -25,22 +25,8 @@ class IngatlanComFilterMapper implements FilterMapper
     ];
 
 
-    /**
-     * Map the filters into specific filters, which can be used on the site
-     *
-     * @param Filter[] $filters
-     *
-     * @return SiteFilter[]
-     */
-    public function map(Filter ...$filters): array
+    protected function getFilterMap(): array
     {
-        $mappedFilters = [];
-        foreach ($filters as $filter) {
-            $mappedFilter = self::FILTER_MAP[get_class($filter)];
-
-            $mappedFilters[] = new $mappedFilter($filter);
-        }
-
-        return $mappedFilters;
+        return self::FILTER_MAP;
     }
 }

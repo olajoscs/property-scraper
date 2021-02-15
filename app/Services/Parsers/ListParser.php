@@ -12,7 +12,7 @@ use App\Models\ParsedPropertyList;
 interface ListParser
 {
     /**
-     * Parse the html of an Ingatlan.com site then create ParsedProperty objects
+     * Parse the html of a site then create ParsedProperty objects
      *
      * @param string $html
      *

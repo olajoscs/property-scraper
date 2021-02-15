@@ -5,40 +5,40 @@ declare(strict_types=1);
 namespace App\Models\Sites;
 
 use App\Services\FilterMappers\FilterMapper;
-use App\Services\FilterMappers\IngatlanComFilterMapper;
-use App\Services\Parsers\IngatlanComListParser;
+use App\Services\FilterMappers\JofogasHuFilterMapper;
+use App\Services\Parsers\JofogasHuListPageParser;
 use App\Services\Parsers\ListParser;
-use App\Services\UrlGenerators\IngatlanComUrlGenerator;
+use App\Services\UrlGenerators\JofogasHuUrlGenerator;
 use App\Services\UrlGenerators\UrlGenerator;
 
-class IngatlanCom implements Site
+class JofogasHu implements Site
 {
     public static function getSite(): string
     {
-        return 'ingatlan.com';
+        return 'ingatlan.jofogas.hu';
     }
 
 
     public function getFilterMapper(): FilterMapper
     {
-        return new IngatlanComFilterMapper();
+        return new JofogasHuFilterMapper();
     }
 
 
     public function getUrlGenerator(): UrlGenerator
     {
-        return new IngatlanComUrlGenerator();
+        return new JofogasHuUrlGenerator();
     }
 
 
     public function getListParser(): ListParser
     {
-        return new IngatlanComListParser();
+        return new JofogasHuListPageParser();
     }
 
 
     public function getDomain(): string
     {
-        return 'https://ingatlan.com';
+        return 'https://ingatlan.jofogas.hu';
     }
 }
