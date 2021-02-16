@@ -13,23 +13,23 @@ class JofogasHuLocationFilterTest extends TestCase
     public function test_empty(): void
     {
         $locationFilter = new LocationFilter();
-        $ingatlanComLocationFilter = new JofogasHuLocationFilter($locationFilter);
-        $this->assertSame('', $ingatlanComLocationFilter->getAsParameterString());
+        $jofogasHuLocationFilter = new JofogasHuLocationFilter($locationFilter);
+        $this->assertSame('', $jofogasHuLocationFilter->getAsParameterString());
     }
 
 
     public function test_list(): void
     {
         $locationFilter = new LocationFilter('Miskolc', 'Kistokaj');
-        $ingatlanComLocationFilter = new JofogasHuLocationFilter($locationFilter);
-        $this->assertSame('borsod-abauj-zemplen/miskolc+kistokaj', $ingatlanComLocationFilter->getAsParameterString());
+        $jofogasHuLocationFilter = new JofogasHuLocationFilter($locationFilter);
+        $this->assertSame('borsod-abauj-zemplen/miskolc+kistokaj', $jofogasHuLocationFilter->getAsParameterString());
     }
 
 
     public function test_transliterate(): void
     {
         $locationFilter = new LocationFilter('Szirmabesenyő', 'Felsőzsolca', 'ÁRVÍZTŰRŐ TÜKÖRFÚRÓGÉP', 'árvíztűrő tükörfúrógép');
-        $ingatlanComLocationFilter = new JofogasHuLocationFilter($locationFilter);
-        $this->assertSame('borsod-abauj-zemplen/szirmabesenyo+felsozsolca+arvizturo-tukorfurogep+arvizturo-tukorfurogep', $ingatlanComLocationFilter->getAsParameterString());
+        $jofogasHuLocationFilter = new JofogasHuLocationFilter($locationFilter);
+        $this->assertSame('borsod-abauj-zemplen/szirmabesenyo+felsozsolca+arvizturo-tukorfurogep+arvizturo-tukorfurogep', $jofogasHuLocationFilter->getAsParameterString());
     }
 }
