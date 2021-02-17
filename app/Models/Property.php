@@ -56,12 +56,8 @@ class Property extends Model
     {
         return [
             'name',
-            'place',
             'link',
-            'site',
-            'image',
             'price',
-            'area',
         ];
     }
 
