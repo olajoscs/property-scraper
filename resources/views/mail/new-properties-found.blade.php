@@ -47,10 +47,19 @@
                             <img src="{{ $property->image }}">
                         </a>
                     </td>
-                    <td colspan="3">{{ $property->isNew() ? __('mail.property_is_new') : '' }} {{ $property->name }}&nbsp;</td>
+                    <td colspan="3">
+                        <a href="{{ $linkGenerator($property->link, $sites[$siteName]) }}">
+                            {{ $property->isNew() ? __('mail.property_is_new') : '' }} {{ $property->name }}&nbsp;
+                        </a>
+                    </td>
                 </tr>
                 <tr>
-                    <td colspan="3">{{ $property->place }}</td>
+                    <td colspan="3">
+                        <a href="{{ $linkGenerator($property->link, $sites[$siteName]) }}">
+                            {{ $property->place }}
+                        </a>
+                    </td>
+
                 </tr>
                 <tr>
                     <td>{{ number_format($property->price, 0, '.', ' ') }} Ft</td>
