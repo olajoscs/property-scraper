@@ -42,7 +42,7 @@ class NewPropertyScraper
     private function createFilters(): array
     {
         return [
-            new AreaFilter(80, 150),
+            new AreaFilter(80, 170),
             new PriceFilter(5000000, 35000000),
             new LocationFilter('Miskolc', 'Szirmabesenyő', 'Mályi', 'Nyékládháza', 'Sajóvámos', 'Kistokaj'),
         ];
