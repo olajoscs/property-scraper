@@ -9,7 +9,7 @@ use App\Models\Filters\SiteFilter;
 use App\Models\Sites\JofogasHu;
 
 /**
- * Generator of ingatlan.jofogas.hucom specific url based on the filters
+ * Generator of ingatlan.jofogas.hu specific url based on the filters
  */
 class JofogasHuUrlGenerator implements UrlGenerator
 {
