@@ -6,6 +6,7 @@ namespace App\Services\UrlGenerators;
 
 use App\Models\Filters\JofogasHu\JofogasHuLocationFilter;
 use App\Models\Filters\SiteFilter;
+use App\Models\Sites\JofogasHu;
 
 /**
  * Generator of ingatlan.jofogas.hucom specific url based on the filters
@@ -33,7 +34,8 @@ class JofogasHuUrlGenerator implements UrlGenerator
         }
 
         return sprintf(
-            'https://ingatlan.jofogas.hu/%shaz%s',
+            '%s/%shaz%s',
+            JofogasHu::getDomain(),
             $locationString,
             $notLocationString
         );

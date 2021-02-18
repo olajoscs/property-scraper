@@ -4,41 +4,41 @@ declare(strict_types=1);
 
 namespace App\Models\Sites;
 
+use App\Services\FilterMappers\DunaHouseFilterMapper;
 use App\Services\FilterMappers\FilterMapper;
-use App\Services\FilterMappers\JofogasHuFilterMapper;
-use App\Services\Parsers\JofogasHuListParser;
+use App\Services\Parsers\DunaHouseListParser;
 use App\Services\Parsers\ListParser;
-use App\Services\UrlGenerators\JofogasHuUrlGenerator;
+use App\Services\UrlGenerators\DunaHouseUrlGenerator;
 use App\Services\UrlGenerators\UrlGenerator;
 
-class JofogasHu implements Site
+class DunaHouse implements Site
 {
     public static function getSite(): string
     {
-        return 'ingatlan.jofogas.hu';
+        return 'DunaHouse';
     }
 
 
     public function getFilterMapper(): FilterMapper
     {
-        return new JofogasHuFilterMapper();
+        return new DunaHouseFilterMapper();
     }
 
 
     public function getUrlGenerator(): UrlGenerator
     {
-        return new JofogasHuUrlGenerator();
+        return new DunaHouseUrlGenerator();
     }
 
 
     public function getListParser(): ListParser
     {
-        return new JofogasHuListParser();
+        return new DunaHouseListParser();
     }
 
 
     public static function getDomain(): string
     {
-        return 'https://ingatlan.jofogas.hu';
+        return 'https://dh.hu';
     }
 }

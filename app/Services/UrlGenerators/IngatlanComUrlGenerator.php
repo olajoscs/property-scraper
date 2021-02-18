@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Services\UrlGenerators;
 
 use App\Models\Filters\SiteFilter;
+use App\Models\Sites\IngatlanCom;
 
 /**
  * Generator of ingatlan.com specific url based on the filters
@@ -26,7 +27,8 @@ class IngatlanComUrlGenerator implements UrlGenerator
         $pageNumberString = $this->generatePageNumberString($pageNumber);
 
         return sprintf(
-            'https://ingatlan.com/lista/%s%s',
+            '%s/lista/%s%s',
+            IngatlanCom::getDomain(),
             implode('+', $strings),
             $pageNumberString
         );

@@ -7,12 +7,15 @@ namespace Tests\Unit\IngatlanCom;
 use App\Models\ParsedProperty;
 use App\Services\Parsers\IngatlanComListParser;
 use PHPUnit\Framework\TestCase;
+use Tests\Unit\SamePropertyModelAssert;
 
 /**
  * Test the parser of the ingatlan.com
  */
 class IngatlanComListParserTest extends TestCase
 {
+    use SamePropertyModelAssert;
+
     public function test_parse_list_page_properties(): void
     {
         $parser = new IngatlanComListParser();
@@ -62,33 +65,6 @@ class IngatlanComListParserTest extends TestCase
 
         $this->assertSameModels($expedtedParsedProducts, $parsedList->parsedProperties);
         $this->assertTrue($parsedList->hasNextPage);
-    }
-
-
-    /**
-     * Assert that the attributes of the models are same
-     *
-     * @param ParsedProperty[] $expected
-     * @param ParsedProperty[] $actual
-     *
-     * @return void
-     */
-    protected function assertSameModels(array $expected, array $actual): void
-    {
-        $this->assertSame(
-            array_map(
-                function (ParsedProperty $property) {
-                    return (array)$property;
-                },
-                $expected
-            ),
-            array_map(
-                function (ParsedProperty $property) {
-                    return (array)$property;
-                },
-                $actual
-            )
-        );
     }
 
 

@@ -13,7 +13,7 @@ use DOMWrap\Element;
 /**
  * Ingatlan.jofogas.hu html parser
  */
-class JofogasHuListPageParser implements ListParser
+class JofogasHuListParser implements ListParser
 {
     public function parse(string $html): ParsedPropertyList
     {

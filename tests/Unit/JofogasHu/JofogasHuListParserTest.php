@@ -5,17 +5,20 @@ declare(strict_types=1);
 namespace Tests\Unit\JofogasHu;
 
 use App\Models\ParsedProperty;
-use App\Services\Parsers\JofogasHuListPageParser;
+use App\Services\Parsers\JofogasHuListParser;
 use PHPUnit\Framework\TestCase;
+use Tests\Unit\SamePropertyModelAssert;
 
 /**
  * Test the parser of the ingatlan.com
  */
 class JofogasHuListParserTest extends TestCase
 {
+    use SamePropertyModelAssert;
+
     public function test_parse_list_page_properties(): void
     {
-        $parser = new JofogasHuListPageParser();
+        $parser = new JofogasHuListParser();
         $html = file_get_contents(__DIR__ . '/fixtures/jofogas-hu-list-page.html');
 
         $expedtedParsedProducts = $this->getExpectedParsedProducts();
@@ -28,7 +31,7 @@ class JofogasHuListParserTest extends TestCase
 
     public function test_parse_list_page_properties_with_prev_and_next_page(): void
     {
-        $parser = new JofogasHuListPageParser();
+        $parser = new JofogasHuListParser();
         $html = file_get_contents(__DIR__ . '/fixtures/jofogas-hu-list-page-with-next-prev-page.html');
 
         $parsedList = $parser->parse($html);
@@ -39,7 +42,7 @@ class JofogasHuListParserTest extends TestCase
 
     public function test_parse_list_page_properties_with_prev_page(): void
     {
-        $parser = new JofogasHuListPageParser();
+        $parser = new JofogasHuListParser();
         $html = file_get_contents(__DIR__ . '/fixtures/jofogas-hu-list-page-with-prev-page.html');
 
         $parsedList = $parser->parse($html);
@@ -50,39 +53,12 @@ class JofogasHuListParserTest extends TestCase
 
     public function test_parse_list_page_properties_with_next_page(): void
     {
-        $parser = new JofogasHuListPageParser();
+        $parser = new JofogasHuListParser();
         $html = file_get_contents(__DIR__ . '/fixtures/jofogas-hu-list-page-with-next-page.html');
 
         $parsedList = $parser->parse($html);
 
         $this->assertTrue($parsedList->hasNextPage);
-    }
-
-
-    /**
-     * Assert that the attributes of the models are same
-     *
-     * @param ParsedProperty[] $expected
-     * @param ParsedProperty[] $actual
-     *
-     * @return void
-     */
-    protected function assertSameModels(array $expected, array $actual): void
-    {
-        $this->assertSame(
-            array_map(
-                function (ParsedProperty $property) {
-                    return (array)$property;
-                },
-                $expected
-            ),
-            array_map(
-                function (ParsedProperty $property) {
-                    return (array)$property;
-                },
-                $actual
-            )
-        );
     }
 
 

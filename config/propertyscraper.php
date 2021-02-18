@@ -12,5 +12,6 @@ return [
     'sites' => [
         \App\Models\Sites\IngatlanCom::class,
         \App\Models\Sites\JofogasHu::class,
+        \App\Models\Sites\DunaHouse::class,
     ]
 ];
