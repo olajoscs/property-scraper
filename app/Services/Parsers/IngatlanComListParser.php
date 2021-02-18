@@ -87,7 +87,11 @@ class IngatlanComListParser implements ListParser
 
     private function getLink(Element $link): string
     {
-        return $link->attr('href');
+        $url = $link->attr('href');
+
+        $parts = explode('/', $url);
+
+        return '/'. array_pop($parts);
     }
 
 

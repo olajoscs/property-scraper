@@ -55,7 +55,6 @@ class Property extends Model
     public function getImportantAttributes(): array
     {
         return [
-            'name',
             'link',
             'price',
         ];

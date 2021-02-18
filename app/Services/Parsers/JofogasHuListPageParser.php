@@ -68,7 +68,18 @@ class JofogasHuListPageParser implements ListParser
             $item->find('.imageBox a')->toArray()
         );
 
-        return reset($urls);
+        $url = reset($urls);
+
+        $parts = explode('/', $url);
+        $idPart = array_pop($parts);
+
+        preg_match('/\d+\.htm/', $idPart, $result);
+
+        if (count($result) === 0) {
+            return $url;
+        }
+
+        return implode('/', array_merge($parts, $result));
     }
 
 
