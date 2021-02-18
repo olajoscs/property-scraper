@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Unit\DunaHouse;
+namespace Tests\Unit\OtthonCentrum;
 
 use App\Models\Filters\AreaFilter;
 use App\Models\Filters\DunaHouse\DunaHouseAreaFilter;
