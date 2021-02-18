@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Models\ParsedProperty;
+use App\Models\Property;
 use App\Models\PropertyPair;
+use App\Models\Sites\Site;
 use App\Repositories\PropertyRepository;
 
 /**
@@ -30,7 +32,7 @@ class PropertyMapper
      *
      * @param ParsedProperty ...$parsedProperties
      *
-     * @return array
+     * @return Property[]
      */
     public function map(ParsedProperty ...$parsedProperties): array
     {
@@ -44,6 +46,25 @@ class PropertyMapper
         $this->propertyRepository->save(...$builtProperties);
 
         return $builtProperties;
+    }
+
+
+    /**
+     * Delete properties, which ID is not in the array
+     *
+     * @param Site       $site
+     * @param Property[] $properties
+     *
+     * @return int Number of deleted rows
+     */
+    public function deleteNotExistingProperties(Site $site, Property ...$properties): int
+    {
+        $propertyForeignIds = array_map(
+            fn(Property $property) => $property->foreign_id,
+            $properties
+        );
+
+        return $this->propertyRepository->deleteNotExisting($propertyForeignIds, $site::getSite());
     }
 
 

@@ -56,4 +56,12 @@ class PropertyRepositoryEloquent implements PropertyRepository
     {
         return Property::where('sendable', '=', true)->get();
     }
+
+
+    public function deleteNotExisting(array $propertyForeignIds, string $site): int
+    {
+        return Property::where('site', '=', $site)
+            ->whereNotIn('foreign_id', $propertyForeignIds)
+            ->delete();
+    }
 }

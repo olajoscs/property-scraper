@@ -52,4 +52,15 @@ interface PropertyRepository
      * @return Collection
      */
     public function findNewProperties(): Collection;
+
+
+    /**
+     * Delete properties, which ID is not in the array
+     *
+     * @param array  $propertyForeignIds
+     * @param string $site
+     *
+     * @return int Number of deleted rows
+     */
+    public function deleteNotExisting(array $propertyForeignIds, string $site): int;
 }

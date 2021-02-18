@@ -34,9 +34,12 @@ class SiteScraper
         $parsedProperties = $this->parseProeprtiesFromSite($site, $siteFilters);
 
         $this->logger->info(count($parsedProperties) . ' properties found');
-        $this->propertyMapper->map(...$parsedProperties);
+        $builtProperties = $this->propertyMapper->map(...$parsedProperties);
 
+        $deleted = $this->propertyMapper->deleteNotExistingProperties($site, ...$builtProperties);
+        $this->logger->info($deleted . ' properties deleted');
         $this->logger->info('Scraping the ' . $site::getSite() . ' is done');
+        $this->logger->info('--');
     }
 
 
