@@ -15,12 +15,14 @@ class NewPropertyScraper
 {
     private $siteProvider;
     private $siteParser;
+    private $filterProvider;
 
 
-    public function __construct(SiteProvider $siteProvider, SiteScraper $siteParser)
+    public function __construct(SiteProvider $siteProvider, SiteScraper $siteParser, FilterProvider $filterProvider)
     {
         $this->siteProvider = $siteProvider;
         $this->siteParser = $siteParser;
+        $this->filterProvider = $filterProvider;
     }
 
 
@@ -31,20 +33,10 @@ class NewPropertyScraper
      */
     public function parse(): void
     {
-        $filters = $this->createFilters();
+        $filters = $this->filterProvider->getAll();
 
         foreach ($this->siteProvider->getAll() as $site) {
             $this->siteParser->parse($site, ...$filters);
         }
-    }
-
-
-    private function createFilters(): array
-    {
-        return [
-            new AreaFilter(80, 170),
-            new PriceFilter(5000000, 35000000),
-            new LocationFilter('Miskolc', 'Szirmabesenyő', 'Mályi', 'Nyékládháza', 'Sajóvámos', 'Kistokaj'),
-        ];
     }
 }

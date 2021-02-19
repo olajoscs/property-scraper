@@ -32,7 +32,6 @@ class PropertyBuilder
         $property->price = $parsedProperty->price;
         $property->area = $parsedProperty->area;
         $property->foreign_id = $parsedProperty->foreign_id;
-        $property->deleted_at = null;
 
         return $property;
     }
