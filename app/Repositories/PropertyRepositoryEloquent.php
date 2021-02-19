@@ -15,7 +15,7 @@ class PropertyRepositoryEloquent implements PropertyRepository
 {
     public function getByForeignId(string $foreignId, string $site): Property
     {
-        return Property::whereForeignId($foreignId)->whereSite($site)->firstOrFail();
+        return Property::withTrashed()->whereForeignId($foreignId)->whereSite($site)->firstOrFail();
     }
 
 
