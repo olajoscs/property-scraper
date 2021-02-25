@@ -32,7 +32,7 @@ class Kernel extends ConsoleKernel
         $schedule
             ->command('property:search')
             ->everyFifteenMinutes()
-            ->between('6:00', '22:00')
+            ->between('5:00', '22:00')
             ->sendOutputTo(self::LOG_PATH . 'property-search-' . $time);
     }
 
