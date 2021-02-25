@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "ext-intl": "*",
         "barryvdh/laravel-debugbar": "^3.5",
         "barryvdh/laravel-ide-helper": "^2.9",
         "fideloper/proxy": "^4.4",
@@ -16,8 +17,8 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
-        "scotteh/php-dom-wrapper": "^2.0",
-        "ext-intl": "*"
+        "olajoscs/dateprovider": "^1.0",
+        "scotteh/php-dom-wrapper": "^2.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

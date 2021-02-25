@@ -34,6 +34,10 @@ class Kernel extends ConsoleKernel
             ->everyFifteenMinutes()
             ->between('5:00', '22:00')
             ->sendOutputTo(self::LOG_PATH . 'property-search-' . $time);
+
+        $schedule
+            ->command('log:clean')
+            ->dailyAt('00:05');
     }
 
     /**
