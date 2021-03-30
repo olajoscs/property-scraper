@@ -62,6 +62,18 @@ class OtthonCentrumListParserTest extends TestCase
     }
 
 
+    public function test_parse_empty_list_page(): void
+    {
+        $parser = new OtthonCentrumListParser();
+        $html = file_get_contents(__DIR__ . '/fixtures/oc-hu-list-page-without-result.html');
+
+        $parsedList = $parser->parse($html);
+
+        $this->assertEmpty($parsedList->parsedProperties);
+        $this->assertFalse($parsedList->hasNextPage);
+    }
+
+
     private function getExpectedParsedProducts(): array
     {
         return [

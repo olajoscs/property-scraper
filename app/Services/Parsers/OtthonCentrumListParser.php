@@ -146,6 +146,10 @@ class OtthonCentrumListParser implements ListParser
 
         $pagination = reset($paginations);
 
+        if (!$pagination) {
+            return false;
+        }
+
         $nextLinks = $pagination->find('.next a')->toArray();
 
         return count($nextLinks) > 0;
